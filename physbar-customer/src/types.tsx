@@ -9,3 +9,8 @@ export interface SelectedDrink {
     drink: Drink;
     variants: string[];
 }
+
+export interface ExtraItem {
+    name: string;
+    price: number;
+}

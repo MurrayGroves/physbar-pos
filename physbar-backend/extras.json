@@ -1,0 +1,42 @@
+{
+    "chocolate_bar": {
+        "name": "Chocolate Bar",
+        "price": 0.5
+    },
+    "coffee_shot": {
+        "name": "Extra Coffee Shot",
+        "price": 0.2
+    },
+    "syrup_hazelnut": {
+        "name": "Hazelnut Syrup",
+        "price": 0.1
+    },
+    "syrup_vanilla": {
+        "name": "Vanilla Syrup",
+        "price": 0.1
+    },
+    "syrup_french_vanilla": {
+        "name": "French Vanilla Syrup",
+        "price": 0.1
+    },
+    "syrup_cinnamon": {
+        "name": "Cinnamon Syrup",
+        "price": 0.1
+    },
+    "syrup_caramel": {
+        "name": "Caramel Syrup",
+        "price": 0.1
+    },
+    "syrup_pumpkin": {
+        "name": "Pumpkin Syrup",
+        "price": 0.1
+    },
+    "syrup_blackforest": {
+        "name": "Black Forest Syrup",
+        "price": 0.1
+    },
+    "syrup_cherry": {
+        "name": "Cherry Syrup",
+        "price": 0.1
+    }
+}

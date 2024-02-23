@@ -49,6 +49,12 @@ fn drink(drinks: &State<HashMap<String, Drink>>, name: String) -> Option<Json<&D
     }
 }
 
+#[get("/api/extras")]
+fn extras(extras: &State<HashMap<String, Extra>>) -> Json<&HashMap<String, Extra>> {
+    Json(extras)
+}
+
+
 #[derive(serde::Deserialize, serde::Serialize)]
 struct Drink {
     name: String,
@@ -57,10 +63,19 @@ struct Drink {
     variants: HashMap<String, f32>,
 }
 
+#[derive(serde::Deserialize, serde::Serialize)]
+struct Extra {
+    name: String,
+    price: f32,
+}
+
 #[launch]
 fn rocket() -> _ {
     let file = File::open("drinks.json").expect("No drinks.json file found");
     let drinks: HashMap<String, Drink> = serde_json::from_reader(file).expect("corrupt drinks.json");
 
-    rocket::build().mount("/", routes![drinks, drink]).manage(drinks).attach(CORS)
+    let file = File::open("extras.json").expect("No extras.json file found");
+    let extras: HashMap<String, Extra> = serde_json::from_reader(file).expect("corrupt extras.json");
+
+    rocket::build().mount("/", routes![drinks, drink, extras]).manage(drinks).manage(extras).attach(CORS)
 }
