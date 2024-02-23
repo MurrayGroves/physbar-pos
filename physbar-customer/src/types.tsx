@@ -4,3 +4,8 @@ export interface Drink {
     multiple: boolean;
     variants: Record<string, number>;
   }
+
+export interface SelectedDrink {
+    drink: Drink;
+    variants: string[];
+}

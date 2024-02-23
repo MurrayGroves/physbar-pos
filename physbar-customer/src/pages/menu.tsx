@@ -9,9 +9,13 @@ import CartIcon from '@mui/icons-material/ShoppingCart';
 import { useEffect, useState } from "react";
 
 import axios from '../axios/axiosConfig';
-import { Drink } from "../types";
+import { Drink, SelectedDrink } from "../types";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Menu({drinks}: {drinks: Record<string, Drink>}) {
+export default function Menu({drinks, setSelectedDrink}: {drinks: Record<string, Drink>, setSelectedDrink: (selectedDrink: SelectedDrink) => void}) {
+    const navigate = useNavigate();
+    const [variants, setVariants] = useState<string[]>([]);
+
     return (
         <Container style={{padding: '0', margin: '0'}}>
             <div style={{padding: '3%', alignContent: 'center', justifyContent: 'center'}}>
@@ -30,13 +34,21 @@ export default function Menu({drinks}: {drinks: Record<string, Drink>}) {
                                                 {Object.entries(drink.variants).map(([variant, price]) => {
                                                 let priceLabel = price > 0 ? `+£${price.toFixed(2)}` : "";
                                                 return (
-                                                    <FormControlLabel key={variant} control={<Checkbox />} label={`${variant} ${priceLabel}`}/>
+                                                    <FormControlLabel key={variant} control={<Checkbox />} label={`${variant} ${priceLabel}`} onChange={(_, checked) => {
+                                                        if (checked) {
+                                                            setVariants([...variants, variant]);
+                                                        } else {
+                                                            setVariants(variants.filter((v) => v !== variant));
+                                                        }
+                                                    }}/>
                                                 );
                                                 })}
                                             </div>
                                             :
                                             <div>
-                                                <RadioGroup defaultValue={Object.keys(drink.variants)[0]}>
+                                                <RadioGroup defaultValue={Object.keys(drink.variants)[0]} onChange={(_, value) => {
+                                                    setVariants([value]);
+                                                }}>
                                                     {Object.entries(drink.variants).map(([variant, price]) => {
                                                     let priceLabel = price > 0 ? `+£${price.toFixed(2)}` : "";
                                                     return (
@@ -46,7 +58,10 @@ export default function Menu({drinks}: {drinks: Record<string, Drink>}) {
                                                 </RadioGroup>
                                             </div>
                                         }
-                                            <Button variant="contained" endIcon={<CartIcon />}>
+                                            <Button variant="contained" endIcon={<CartIcon />} onClick={() => {
+                                                setSelectedDrink({drink: drink, variants: variants});
+                                                navigate('/checkout');
+                                            }}>
                                                 Buy
                                             </Button>
                                         </FormControl>
