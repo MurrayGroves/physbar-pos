@@ -1,0 +1,71 @@
+{
+    "espresso": {
+        "name": "Espresso",
+        "base_price": 0.4,
+        "variants": {"Single": 0, "Double": 0.1},
+        "multiple": false
+    },
+
+    "americano": {
+        "name": "Americano",
+        "base_price": 0.4,
+        "variants": {"Single": 0, "Double": 0.1},
+        "multiple": false
+    },
+
+    "latte": {
+        "name": "Latte",
+        "base_price": 0.6,
+        "variants": {"Single": 0, "Double": 0.2},
+        "multiple": false
+    },
+
+    "cappuccino": {
+        "name": "Cappuccino",
+        "base_price": 0.6,
+        "variants": {"Single": 0, "Double": 0.2},
+        "multiple": false
+    },
+
+    "iced_latte": {
+        "name": "Iced Latte",
+        "base_price": 0.6,
+        "variants": {"Single": 0, "Double": 0.2},
+        "multiple": false
+    },
+
+    "flat_white": {
+        "name": "Flat White",
+        "base_price": 0.7,
+        "variants": {"Single": 0, "Double": 0.2},
+        "multiple": false
+    },
+    
+    "mocha": {
+        "name": "Mocha",
+        "base_price": 0.7,
+        "variants": {"Single": 0, "Double": 0.2},
+        "multiple": false
+    },
+
+    "dirty_chai": {
+        "name": "Dirty Chai",
+        "base_price": 0.7,
+        "variants": {"Single": 0, "Double": 0.2},
+        "multiple": false
+    },
+
+    "tea": {
+        "name": "Tea",
+        "base_price": 0.15,
+        "variants": {"PG Tips": 0.0, "Earl Grey": 0.0, "Green": 0.0, "Herbal": 0.0},
+        "multiple": false
+    },
+
+    "hot_choc": {
+        "name": "Hot Choc",
+        "base_price": 0.5,
+        "variants": {"Cream": 0.05, "Marshmallows": 0.05},
+        "multiple": true
+    }
+}
